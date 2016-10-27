@@ -1,0 +1,26 @@
+<nav id='saga-nav' [ngClass]='getNavClasses()'>
+  <div *ngIf='showBurger()' class='toggle-container' [@burgerTrans]='navMode'>
+    <div class='nav-toggle' (click)='onToggle($event)'>
+      <span class='sr-only'>Toggle navigation</span>
+      <span class='icon-bar'></span>
+      <span class='icon-bar'></span>
+      <span class='icon-bar'></span>
+    </div>
+  </div>
+  <div *ngIf='isNavFull()' class='nav-item-horz'>
+    <ul class='nav-items'>
+      <li *ngFor='let item of navItems' [@menuItemsTrans]='menuState'>
+        <a routerLink='{{item.link}}' routerLinkActive='active' (click)="onItemClick($event)">{{item.text}}</a>
+        <div *ngIf='item.newFlag' class='newFlag'></div>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf='isNavCollapsed()' class='nav-item-vert'>
+    <ul class='nav-items'>
+      <li *ngFor='let item of navItems' [@menuItemsTrans]='menuState'>
+        <a routerLink='{{item.link}}' routerLinkActive='active' (click)="onItemClick($event)">{{item.text}}</a>
+        <div *ngIf='item.newFlag' class='newFlag'></div>
+      </li>
+    </ul>
+  </div>
+</nav>

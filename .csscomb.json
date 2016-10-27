@@ -1,0 +1,72 @@
+{
+  "always-semicolon": true,
+  "block-indent": 2,
+  "color-case": "lower",
+  "color-shorthand": false,
+  "quotes": "single",
+  "space-after-colon": 1,
+  "space-before-opening-brace": 1,
+  "space-after-opening-brace": "\n",
+  "space-before-selector-delimiter": 0,
+  "space-after-selector-delimiter": 1,
+  "space-before-closing-brace": "\n",
+  "space-before-colon": "",
+  "space-before-combinator": 1,
+  "space-after-combinator": 1,
+  "strip-spaces": true,
+  "tab-size": 2,
+  "unitless-zero": true,
+  "lines-between-rulesets": 1,
+  "sort-order": [
+    [
+      "position",
+      "top",
+      "right",
+      "bottom",
+      "left",
+      "display",
+      "float",
+      "overflow"
+    ],
+    [
+      "margin",
+      "margin-top",
+      "margin-right",
+      "margin-bottom",
+      "margin-left",
+      "padding",
+      "padding-top",
+      "padding-right",
+      "padding-bottom",
+      "padding-left",
+      "border",
+      "border-top",
+      "border-right",
+      "border-bottom",
+      "border-left",
+      "border-color",
+      "width",
+      "max-width",
+      "min-width",
+      "height",
+      "max-height",
+      "min-height"
+    ],
+    [
+      "font-family",
+      "src",
+      "font-size",
+      "font-weight",
+      "line-height",
+      "letter-spacing",
+      "text-decoration"
+    ],
+    [
+      "color",
+      "background",
+      "background-color",
+      "text-shadow"
+    ],
+    ["..."]
+  ]
+}
