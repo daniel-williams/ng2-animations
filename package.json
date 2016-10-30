@@ -2,14 +2,17 @@
   "name": "ng2-animations",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daniel-williams/ng2-animations.git"
+  },
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js --inline --progress --port 3000",
     "test": "karma start config/karma.conf.js",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["angular", "animation"],
+  "author": "Daniel James Williams",
   "license": "ISC",
   "dependencies": {
     "@angular/common": "^2.0.2",
