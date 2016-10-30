@@ -12,6 +12,7 @@ import { Header } from './header';
 import { PageOne } from './page-one';
 import { PageTwo } from './page-two';
 import { TopNav } from './navigation';
+import { Sprite } from './sprite';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { TopNav } from './navigation';
     Header,
     PageOne,
     PageTwo,
+    Sprite,
     TopNav
   ],
   providers: [
