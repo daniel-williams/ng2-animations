@@ -12,11 +12,19 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.ts']
+    extensions: ['', '.js', '.ts'],
+    alias: {
+      'ScrollMagicGSAP': 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap',
+      'ScrollToPlugin': 'gsap/src/uncompressed/plugins/ScrollToPlugin'
+    }
   },
 
   module: {
     loaders: [
+      {
+        test: /\.js$/,
+        loader: 'imports-loader?define=>false'
+      },
       {
         test: /\.ts$/,
         loaders: ['awesome-typescript-loader', 'angular2-template-loader']

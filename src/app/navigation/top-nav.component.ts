@@ -67,6 +67,7 @@ export class TopNav {
   private menuItems: any[] = [
     { link: '/page-one', text: 'Page One' },
     { link: '/page-two', text: 'Page Two' },
+    { link: '/page-three', text: 'Page Three' },
   ];
   private navItems: any[] = this.menuItems;
 

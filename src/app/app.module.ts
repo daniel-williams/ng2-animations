@@ -5,12 +5,14 @@ import { NgReduxModule } from 'ng2-redux';
 import { NgReduxRouter } from 'ng2-redux-router';
 import { RouterModule } from '@angular/router';
 
-import routes from '../routes';
+import { AppRouterModule } from './app-router.module';
+
 import { App } from './app.component';
 import { Footer } from './footer';
 import { Header } from './header';
 import { PageOne } from './page-one';
 import { PageTwo } from './page-two';
+import { PageThree } from './page-three';
 import { TopNav } from './navigation';
 import { Sprite } from './sprite';
 
@@ -18,7 +20,7 @@ import { Sprite } from './sprite';
   imports: [
     BrowserModule,
     NgReduxModule,
-    RouterModule.forRoot(routes)
+    AppRouterModule
   ],
   declarations: [
     App,
@@ -26,6 +28,7 @@ import { Sprite } from './sprite';
     Header,
     PageOne,
     PageTwo,
+    PageThree,
     Sprite,
     TopNav
   ],
