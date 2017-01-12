@@ -1,25 +1,30 @@
-<nav id='saga-nav' [ngClass]='getNavClasses()'>
-  <div *ngIf='showBurger()' class='toggle-container' [@burgerTrans]='navMode'>
-    <div class='nav-toggle' (click)='onToggle($event)'>
+<nav id='top-nav' [ngClass]='getTopNavClasses()'>
+  <div *ngIf='isCollapsedMenu()' class='toggle-wrap'>
+    <div class='toggle' (click)='toggleDrawerState($event)'>
       <span class='sr-only'>Toggle navigation</span>
       <span class='icon-bar'></span>
       <span class='icon-bar'></span>
       <span class='icon-bar'></span>
     </div>
   </div>
-  <div *ngIf='isNavFull()' class='nav-item-horz'>
-    <ul class='nav-items'>
-      <li *ngFor='let item of navItems' [@menuItemsTrans]='menuState'>
-        <a routerLink='{{item.link}}' routerLinkActive='active' (click)="onItemClick($event)">{{item.text}}</a>
-        <div *ngIf='item.newFlag' class='newFlag'></div>
+  <div *ngIf='isCollapsedMenu()' class='item-wrap-vert'>
+    <div class='icon fa fa-remove' (click)='closeDrawer()'></div>
+    <ul class='items'>
+      <li *ngFor='let item of menuItems'>
+        <a
+          routerLink='{{item.link}}'
+          routerLinkActive='active'
+          (click)="onItemClick($event)">{{item.text}}</a>
       </li>
     </ul>
   </div>
-  <div *ngIf='isNavCollapsed()' class='nav-item-vert'>
-    <ul class='nav-items'>
-      <li *ngFor='let item of navItems' [@menuItemsTrans]='menuState'>
-        <a routerLink='{{item.link}}' routerLinkActive='active' (click)="onItemClick($event)">{{item.text}}</a>
-        <div *ngIf='item.newFlag' class='newFlag'></div>
+  <div *ngIf='isFullMenu()' class='item-wrap-horz'>
+    <ul class='items'>
+      <li *ngFor='let item of menuItems'>
+        <a
+          routerLink='{{item.link}}'
+          routerLinkActive='active'
+          (click)="onItemClick($event)">{{item.text}}</a>
       </li>
     </ul>
   </div>

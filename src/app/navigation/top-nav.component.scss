@@ -1,14 +1,12 @@
-#saga-nav {
+#top-nav {
   position: relative;
   display: block;
   margin-bottom: 50px;
 
-  > .toggle-container {
-    display: block;
-
+  > .toggle-wrap {
     text-align: center;
 
-    .nav-toggle {
+    .toggle {
       position: relative;
       display: inline-block;
 
@@ -39,14 +37,14 @@
     }
   }
 
-  .nav-item-horz, .nav-item-vert {
+  .item-wrap-horz, .item-wrap-vert {
     display: block;
     overflow: hidden;
 
     margin: 0;
     padding: 0;
 
-    ul.nav-items {
+    ul {
       position: relative;
       display: block;
 
@@ -98,8 +96,8 @@
     }
   }
 
-  .nav-item-horz {
-    ul.nav-items > li {
+  .item-wrap-horz {
+    ul.items > li {
       display: inline-block;
 
       > a.active {
@@ -108,18 +106,41 @@
     }
   }
 
-  .nav-item-vert {
-    ul.nav-items > li {
+  .item-wrap-vert {
+    position: fixed;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+
+    background-color: #000;
+    z-index: 100;
+    opacity: 0.95;
+
+    > .icon {
+      display: block;
+      text-align: right;
+      margin: 10px;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    ul > li {
       position: relative;
       display: block;
+      padding: 0;
 
-      text-align: center;
+      text-align: left;
 
       > a {
-        display: inline-block;
+        display: block;
 
         margin: 0;
         padding: 10px 20px;
+
+        &:hover {
+          background-color: #f2f2f2;
+        }
       }
     }
   }

@@ -1,154 +1,122 @@
 import {
   Component,
-  ElementRef,
-  HostListener,
-  ViewChild,
-  // animation
-  keyframes,
-  trigger,
-  state,
-  style,
-  transition,
-  animate
+  HostListener
 } from '@angular/core';
 
+var gsap = require('gsap');
+var TweenMax = gsap.TweenMax;
+var TimelineMax = gsap.TimelineMax;
+var Easing = require('EasePack');
+
+var ScrollMagic = require('scrollmagic');
+require('ScrollMagicGSAP');
+require('ScrollToPlugin');
+
 import {
-  menuStates,
-  navModes
+  drawerStates,
+  menuModes
 } from './top-nav.constants';
 
 @Component({
   selector: 'top-nav',
   templateUrl: './top-nav.component.html',
   styleUrls: ['./top-nav.component.scss'],
-  animations: [
-    trigger('burgerTrans', [
-      state('collapsed', style({ transform: 'translateX(0)' })),
-      transition('void => *', [
-        animate(150, keyframes([
-          style({ transform: 'translateX(100%)', offset: 0 }),
-          style({ transform: 'translateX(-15px)', offset: 0.8 })
-        ]))
-      ]),
-      transition('* => void', [
-        style({ display: 'none' })
-      ])
-    ]),
-    trigger('menuItemsTrans', [
-      state('opened', style({ transform: 'translateX(0)' })),
-      transition('void => *', [
-        animate(150, keyframes([
-          style({ transform: 'translateX(-100%)', offset: 0 }),
-          style({ transform: 'translateX(15px)', offset: 0.8 })
-        ]))
-      ]),
-      transition('* => void', [
-        animate(150, keyframes([
-          style({ transform: 'translateX(0)', offset: 0 }),
-          style({ transform: 'translateX(15px)', offset: 0.4 }),
-          style({ transform: 'translateX(-100%)', offset: 1.0 })
-        ]))
-      ])
-    ])
-  ]
 })
 export class TopNav {
   @HostListener('window:resize', ['$event'])
     onResize(event: any) {
-      this.setNavState();
+      this.setNavModeAndState();
     }
 
-  @ViewChild('toggle') toggle: ElementRef;
-  @ViewChild('menu') menu: ElementRef;
-
-  private navMode: navModes = navModes.full;
-  private menuState: menuStates = menuStates.closed;
+  private menuMode: menuModes = menuModes.full;
+  private drawerState: drawerStates = drawerStates.closed;
 
   private menuItems: any[] = [
     { link: '/page-one', text: 'Page One' },
     { link: '/page-two', text: 'Page Two' },
     { link: '/page-three', text: 'Page Three' },
   ];
-  private navItems: any[] = this.menuItems;
 
   constructor() {
-    this.setNavState();
+    this.setNavModeAndState();
   }
 
-  onToggle(event: UIEvent) {
-    this.menuState = this.menuState === menuStates.opened
-      ? menuStates.closed
-      : menuStates.opened;
-      this.updateMenuItems();
+  closeDrawer(event: UIEvent) {
+    this.drawerState = drawerStates.closed;
+    this.updateDrawerState();
   }
 
-  updateMenuItems() {
-    if(this.menuState === menuStates.opened) {
-      this.staggerAddItems();
-    } else {
-      this.staggerRemoveItems();
+  toggleDrawerState(event: UIEvent) {
+    this.drawerState = this.drawerState === drawerStates.opened
+      ? drawerStates.closed
+      : drawerStates.opened;
+    this.updateDrawerState();
+  }
+
+  updateDrawerState(): void {
+    let itemWrap = document.querySelector('.item-wrap-vert');
+
+    if(itemWrap) {
+      if(this.drawerState === drawerStates.opened) {
+        TweenMax.to(itemWrap, .25, {
+          // opacity: 1.0,
+          width: '100%',
+          ease: Easing.Power4.easeInOut
+        });
+      } else {
+        TweenMax.to(itemWrap, .25, {
+          // opacity: 0.0,
+          width: '0',
+          ease: Easing.Power4.easeOut
+        });
+      }
     }
+    // } else {
+    //   TweenMax.set('.item-wrap-horz', {
+    //     // opacity: 1.0,
+    //     width: 'auto'
+    //   })
+    // }
   }
 
-  setNavState() {
+  setNavModeAndState() {
     if(window.innerWidth > 768) {
-      if(this.navMode !== navModes.full) {
-        this.AddItems();
-        this.menuState = menuStates.opened;
-      }
-      this.navMode = navModes.full;
+      this.drawerState = drawerStates.opened;
+      this.menuMode = menuModes.full;
     } else {
-      if(this.navMode !== navModes.collapsed) {
-        this.RemoveItems();
-        this.menuState = menuStates.closed;
-      }
-      this.navMode = navModes.collapsed;
+      this.drawerState = drawerStates.closed;
+      this.menuMode = menuModes.collapsed;
     }
+    this.updateDrawerState();
   }
 
-  AddItems() {
-    this.navItems = this.menuItems;
+  getTopNavClasses(): string[] {
+    return [this.menuMode.toString()];
   }
 
-  RemoveItems() {
-    this.navItems = [];
-  }
+  // getItemWrapClasses(): string[] {
+  //   return this.isCollapsedMenu()
+  //    ? ['item-wrap-vert']
+  //    : ['item-wrap-horz'];
+  // }
 
-  staggerAddItems() {
-    this.menuItems.forEach((item, x) => {
-      setTimeout(() => this.navItems.push(item), x * 75);
-    });
-  }
-
-  staggerRemoveItems() {
-    for(var i = 0; i < this.navItems.length; i++) {
-      setTimeout(() => {
-        this.navItems.pop();
-      }, i * 75);
+  onItemClick(event: UIEvent): void {
+    if(this.menuMode === menuModes.collapsed) {
+      this.drawerState = drawerStates.closed;
+      this.updateDrawerState();
     }
-  }
-
-  getNavClasses(): string[] {
-    return [this.navMode.toString()];
   }
 
   showBurger(): boolean {
-    return this.navMode === navModes.collapsed;
+    return this.menuMode === menuModes.collapsed;
   }
 
-  onItemClick(event: UIEvent): void {
-    if(this.navMode === navModes.collapsed) {
-      this.menuState = menuStates.closed;
-      this.updateMenuItems();
-    }
+  isFullMenu(): boolean {
+    return this.menuMode === menuModes.full;
   }
 
-  isNavFull(): boolean {
-    return this.navMode === navModes.full;
-  }
-
-  isNavCollapsed(): boolean {
-    return this.navMode === navModes.collapsed;
+  isCollapsedMenu(): boolean {
+    return this.menuMode === menuModes.collapsed;
   }
 
 }
