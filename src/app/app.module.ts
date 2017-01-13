@@ -16,6 +16,8 @@ import { PageThree } from './page-three';
 import { TopNav } from './navigation';
 import { Sprite } from './sprite';
 
+import { FlyInDirective } from './shared/flyin.directive';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { Sprite } from './sprite';
     PageTwo,
     PageThree,
     Sprite,
-    TopNav
+    TopNav,
+    FlyInDirective
   ],
   providers: [
     NgRedux,

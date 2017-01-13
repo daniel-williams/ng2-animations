@@ -40,7 +40,6 @@ export class PageThree {
       let title = slides[i].querySelector('.title');
       title.appendChild(document.createTextNode(`Title for Slide #${i+1}`))
       let icons = slides[i].querySelectorAll('.icons > .icon');
-      console.log(icons);
 
       timelines[i] = new TimelineMax();
       timelines[i].from(title, .25, {
