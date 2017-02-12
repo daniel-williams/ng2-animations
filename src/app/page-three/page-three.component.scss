@@ -3,7 +3,13 @@
 }
 .section {
   color: #444;
-  padding-bottom: 60px;
+  .slide {
+    background-color: #fff;
+    padding: 40px 0;
+  }
+}
+.section:last-child .slide {
+  min-height: 100vh;
 }
 ul.icons {
   margin: 0;

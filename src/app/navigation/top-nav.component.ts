@@ -32,9 +32,10 @@ export class TopNav {
   private drawerState: drawerStates = drawerStates.closed;
 
   private menuItems: any[] = [
-    { link: '/page-one', text: 'Page One' },
-    { link: '/page-two', text: 'Page Two' },
-    { link: '/page-three', text: 'Page Three' },
+    { link: '/one', text: 'One' },
+    { link: '/two', text: 'Two' },
+    { link: '/three', text: 'Three' },
+    { link: '/four', text: 'Four' },
   ];
 
   constructor() {
@@ -59,24 +60,16 @@ export class TopNav {
     if(itemWrap) {
       if(this.drawerState === drawerStates.opened) {
         TweenMax.to(itemWrap, .25, {
-          // opacity: 1.0,
           width: '100%',
           ease: Easing.Power4.easeInOut
         });
       } else {
         TweenMax.to(itemWrap, .25, {
-          // opacity: 0.0,
           width: '0',
           ease: Easing.Power4.easeOut
         });
       }
     }
-    // } else {
-    //   TweenMax.set('.item-wrap-horz', {
-    //     // opacity: 1.0,
-    //     width: 'auto'
-    //   })
-    // }
   }
 
   setNavModeAndState() {
@@ -93,12 +86,6 @@ export class TopNav {
   getTopNavClasses(): string[] {
     return [this.menuMode.toString()];
   }
-
-  // getItemWrapClasses(): string[] {
-  //   return this.isCollapsedMenu()
-  //    ? ['item-wrap-vert']
-  //    : ['item-wrap-horz'];
-  // }
 
   onItemClick(event: UIEvent): void {
     if(this.menuMode === menuModes.collapsed) {

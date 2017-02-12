@@ -13,10 +13,17 @@ import { Header } from './header';
 import { PageOne } from './page-one';
 import { PageTwo } from './page-two';
 import { PageThree } from './page-three';
+import { PageFour } from './page-four';
 import { TopNav } from './navigation';
 import { Sprite } from './sprite';
 
-import { FlyInDirective } from './shared/flyin.directive';
+import {
+  FlyInDirective,
+  PinAtDirective,
+  ParlaxBillboard
+} from './shared';
+
+import { AnimationService } from '../services';
 
 @NgModule({
   imports: [
@@ -31,13 +38,19 @@ import { FlyInDirective } from './shared/flyin.directive';
     PageOne,
     PageTwo,
     PageThree,
+    PageFour,
     Sprite,
     TopNav,
-    FlyInDirective
+
+    FlyInDirective,
+    PinAtDirective,
+    ParlaxBillboard
   ],
   providers: [
     NgRedux,
-    NgReduxRouter
+    NgReduxRouter,
+
+    AnimationService
   ],
   bootstrap: [
     App

@@ -3,24 +3,29 @@ import { Routes } from '@angular/router';
 import { PageOne } from '../app/page-one';
 import { PageTwo } from '../app/page-two';
 import { PageThree } from '../app/page-three';
+import { PageFour } from '../app/page-four';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/page-one',
+    redirectTo: '/one',
     pathMatch: 'full'
   },
   {
-    path: 'page-one',
+    path: 'one',
     component: PageOne
   },
   {
-    path: 'page-two',
+    path: 'two',
     component: PageTwo
   },
   {
-    path: 'page-three',
+    path: 'three',
     component: PageThree
+  },
+  {
+    path: 'four',
+    component: PageFour
   },
 ];
 

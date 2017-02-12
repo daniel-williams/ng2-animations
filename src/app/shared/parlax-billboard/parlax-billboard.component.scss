@@ -1,0 +1,28 @@
+.container-parlax {
+  position: relative;
+
+  .content {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+  }
+  .parlax {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    overflow: hidden;
+
+    .parlax-bg {
+      position: relative;
+      height: 200%;
+      background-image: url('/content/images/parlax-bg01.png');
+      top: -100%;
+    }
+  }
+}
