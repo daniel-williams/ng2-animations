@@ -1,12 +1,10 @@
 import { Component, OnInit, AfterViewInit} from '@angular/core';
 
-var gsap = require('gsap');
-var Easing = require('EasePack');
-var TweenMax = gsap.TweenMax;
-var TimelineMax = gsap.TimelineMax;
-
-var ScrollMagic = require('scrollmagic');
-require('ScrollMagicGSAP');
+import {
+  Easing,
+  TimelineMax,
+  ScrollMagic
+} from '../../services';
 
 @Component({
   selector: 'page-three',
@@ -27,14 +25,14 @@ export class PageThree {
 
   ngAfterViewInit() {
     let controller = new ScrollMagic.Controller();
-    let slides = document.querySelectorAll('.section > .slide');
+    let slides = document.querySelectorAll('.section .slide');
     let timelines: any[] = [];
 
-    for(let i = 0; i < slides.length; i++) {
-      let endMarker = document.createElement('div');
-      endMarker.classList.add('end-marker');
-      slides[i].appendChild(endMarker);
-    }
+    // for(let i = 0; i < slides.length; i++) {
+    //   let endMarker = document.createElement('div');
+    //   endMarker.classList.add('end-marker');
+    //   slides[i].appendChild(endMarker);
+    // }
 
     for(let i = 0; i < slides.length; i++) {
       let title = slides[i].querySelector('.title');
@@ -54,6 +52,7 @@ export class PageThree {
 
       new ScrollMagic.Scene({
         triggerElement: slides[i],
+        triggerHook: 0.9
       })
       .setTween(timelines[i])
       .addTo(controller);

@@ -1,24 +1,29 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
-import a from '../../services/animation.service';
+import {
+  Easing,
+  ScrollMagic,
+  TweenMax
+} from '../../services';
 
 @Directive({
   selector: '[flyIn]'
 })
 export class FlyInDirective {
-  @Input('flyIn') duration: string;
-  @Input() trigger: string;
   private controller: any;
 
+  @Input('flyIn') duration: string;
+  @Input() trigger: string;
+
   constructor(private el: ElementRef) {
-    this.controller = new a.ScrollMagic.Controller();
+    this.controller = new ScrollMagic.Controller();
   }
 
   ngOnInit() {
-    let t = a.TweenMax.from(this.el.nativeElement, this.duration || 0.5, {
+    let t = TweenMax.from(this.el.nativeElement, this.duration || 0.5, {
       marginLeft: '100%',
       opacity: 0.0,
-      ease: a.Easing.Power4.easeInOut
+      ease: Easing.Power4.easeInOut
     });
 
     let s: any = {
@@ -31,7 +36,7 @@ export class FlyInDirective {
         : this.trigger;
     }
 
-    new a.ScrollMagic.Scene(s)
+    new ScrollMagic.Scene(s)
       .setTween(t)
       .addTo(this.controller);
   }
