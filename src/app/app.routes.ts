@@ -8,7 +8,7 @@ import { PageFour } from '../app/page-four';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/one',
+    redirectTo: '/four',
     pathMatch: 'full'
   },
   {

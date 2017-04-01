@@ -18,6 +18,7 @@ import { TopNav } from './navigation';
 import { Sprite } from './sprite';
 
 import {
+  Ellipsis,
   FlyInDirective,
   PinAtDirective,
   ParlaxBillboard
@@ -42,6 +43,7 @@ import { AnimationService } from '../services';
     Sprite,
     TopNav,
 
+    Ellipsis,
     FlyInDirective,
     PinAtDirective,
     ParlaxBillboard
