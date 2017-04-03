@@ -1,0 +1,18 @@
+<div class='sort-table'>
+
+  <table class='data-tbl stretch'>
+    <thead>
+      <tr>
+        <td
+          *ngFor='let column of sortTableData.columns'
+          (click)='setSort(column)'>{{column.key}}</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class='item-data' *ngFor='let row of sortTableData.sortedData'>
+        <td *ngFor='let column of sortTableData.columns'>{{row[column.key]}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

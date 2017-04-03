@@ -2,3 +2,35 @@
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+$tblRowHoverColor: #eee;
+$tblBorderColor: #ddd;
+
+.data-tbl {
+
+  > thead > tr,
+  > tbody > tr {
+    border-bottom: 1px solid $tblBorderColor;
+
+    td {
+      font-size: 16px; font-size: 1.6rem;
+      line-height: 2rem;
+      padding: 1rem;
+    }
+  }
+  > thead > tr {
+    border-top: 1px solid $tblBorderColor;
+
+    > td {
+      font-size: 18px; font-size: 1.8rem;
+      font-weight: bold;
+      padding: 1.2rem;
+    }
+  }
+  > tbody > tr {
+
+    &:hover {
+      background-color: $tblRowHoverColor;
+    }
+  }
+}

@@ -21,7 +21,8 @@ import {
   Ellipsis,
   FlyInDirective,
   PinAtDirective,
-  ParlaxBillboard
+  ParlaxBillboard,
+  SortTable,
 } from './shared';
 
 import { AnimationService } from '../services';
@@ -46,7 +47,8 @@ import { AnimationService } from '../services';
     Ellipsis,
     FlyInDirective,
     PinAtDirective,
-    ParlaxBillboard
+    ParlaxBillboard,
+    SortTable
   ],
   providers: [
     NgRedux,

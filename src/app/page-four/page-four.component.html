@@ -1,13 +1,31 @@
-<div class="container">
+<div class="container-fluid">
   <div class="section">
-    <p *ngFor='let lorem of lorems' title='{{lorem}}'>{{lorem | ellipsis : 120 : factor}}</p>
+
+    <table class='data-tbl stretch'>
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Lorem</td>
+          <td>Showing</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='item-data' *ngFor='let lorem of lorems'>
+          <td>###</td>
+          <td>
+            <span title='{{lorem}}'>{{lorem | ellipsis : 100 : sizeRelative}}</span>
+          </td>
+          <td><div style='width:100px;height:20px;background-color:azure'></div></td>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
+
   <parlax-billboard height='400px' src='/content/images/parlax-bg01.png'>
     <h1>Centered Content</h1>
   </parlax-billboard>
-  <div class="section">
-    <p *ngFor='let lorem of lorems' title='{{lorem}}'>{{lorem | ellipsis : 120 : factor}}</p>
-  </div>
 
+  <sort-table [data]='data'></sort-table>
 
 </div>
