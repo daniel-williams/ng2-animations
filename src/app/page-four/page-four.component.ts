@@ -10,7 +10,19 @@ import { ResponsiveBase } from '../responsive-base';
 export class PageFour extends ResponsiveBase {
   @HostListener('window:resize', ['$event'])
     onWindowResize(evt: any) {
+
       this.onResize(evt);
+
+      let cells = document.querySelectorAll('table > thead > tr > td');
+      let divs = document.querySelectorAll('.test > div');
+
+      for(let i = 0; i < cells.length; i++) {
+        let cell = cells[i] as Element;
+        let div = divs[i] as HTMLDivElement;
+
+        div.setAttribute('style',`display:block;width:${cell.clientWidth}px`);
+        div.style.width=`${cell.clientWidth}px`;
+      }
     }
 
   constructor() {
