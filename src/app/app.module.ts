@@ -13,7 +13,7 @@ import { Header } from './header';
 import { PageOne } from './page-one';
 import { PageTwo } from './page-two';
 import { PageThree } from './page-three';
-import { PageFour } from './page-four';
+import { PageFour, ChildTest } from './page-four';
 import { TopNav } from './navigation';
 import { Sprite } from './sprite';
 
@@ -41,6 +41,7 @@ import { AnimationService } from '../services';
     PageTwo,
     PageThree,
     PageFour,
+    ChildTest,
     Sprite,
     TopNav,
 

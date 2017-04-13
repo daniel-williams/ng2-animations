@@ -1,5 +1,17 @@
 <div class="container-fluid">
   <div class="section">
+    <div *ngFor='let item of data; let i = index;'>
+      <button type='btn btn-default' (click)='item.triggerSayMyName()'>say name</button>
+      <button type='btn btn-default' (click)='item.ping()'>ping</button>
+      <child-test [remote]='item' [name]='item.name' (sayMyName)='sayName($event)'></child-test>
+    </div>
+    <div>Name: {{name}}</div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+  <div class="section">
 
     <div class='test'>
       <div>Title One</div>

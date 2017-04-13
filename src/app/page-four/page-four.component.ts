@@ -1,11 +1,12 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ViewChildren, QueryList } from '@angular/core';
 
 import { ResponsiveBase } from '../responsive-base';
+import { ChildTest } from './child-test';
 
 @Component({
   selector: 'page-four',
   templateUrl: './page-four.component.html',
-  styleUrls: ['./page-four.component.scss']
+  styleUrls: ['./page-four.component.scss'],
 })
 export class PageFour extends ResponsiveBase {
   @HostListener('window:resize', ['$event'])
@@ -25,8 +26,27 @@ export class PageFour extends ResponsiveBase {
       }
     }
 
+    @ViewChildren(ChildTest) testChildren: QueryList<ChildTest>;
+
   constructor() {
     super();
+  }
+
+  ngAfterViewInit() {
+
+  }
+
+  test(i: number) {
+    if(this.testChildren.length >= i) {
+      let children = this.testChildren.toArray();
+
+      children[i].triggerSayMyName();
+    }
+  }
+
+  private name: string = '';
+  sayName(val: string): void {
+    this.name = val || '';
   }
 
   lorems = [
@@ -40,17 +60,17 @@ export class PageFour extends ResponsiveBase {
   data = [
     {
       id: 1,
-      name: 'item 1',
+      name: 'Luke Skywalker',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum ipsa expedita minus fuga nobis doloremque doloribus consequuntur debitis totam perferendis quas quia, quibusdam, non qui corporis, quo harum repudiandae officiis?',
     },
     {
       id: 2,
-      name: 'item 2',
+      name: 'Han Solo',
       description: 'Aut perspiciatis harum cum veritatis quia laboriosam illo odio mollitia ipsam earum ullam, fuga officia tempora quo temporibus eveniet blanditiis dolorum itaque iure molestias esse placeat aspernatur neque. Ex, id!',
     },
     {
       id: 3,
-      name: 'item 3',
+      name: 'Leia Organa',
       description: 'Ea est neque ut illum, maxime accusantium voluptas voluptate delectus repellat optio! Dolorum quas qui accusamus consequatur nesciunt hic tenetur autem, esse ipsa quaerat illo, fugiat nulla accusantium ut vel.',
     }
   ];
